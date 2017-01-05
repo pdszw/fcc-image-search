@@ -2,11 +2,16 @@
 
 'use strict';
 
+var imageSearch = require('../app/controllers/image-search');
+
+module.exports = function(app);
 // root
 router.get('/', function(req,res) {
 //    res.status(200).sendFile('index');
-    var html = template('index');
-    res.send(html);
+//    var html = template('index');
+//    res.send(html);
+    res.send('index');
+    console.log('sent index');
 });
 
 // latest search terms
@@ -17,8 +22,9 @@ router.get('/api/imagesearch/:query(*)', api.submitQuery);
 
 router.get('*', function(req,res) {
     //res.status(404).sendFile('404');
-    var html = template('404');
-    res.send(html);
-}
+    //var html = template('404');
+    //res.send(html);
+    res.send('sent 404');
+});
 
-modules.export = router;
+module.exports = router;

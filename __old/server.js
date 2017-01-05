@@ -12,7 +12,7 @@ var googleAPIKey = process.env.API_KEY;
 var googleCX = process.env.CX;
 var googleAppID = process.env.APP_ID;
 var port = process.env.port || 3000;
-var selfURL = req.protocol + '://' + req.get(host);
+//var selfURL = req.protocol + '://' + req.get(host);
 //var path = process.cwd();
 
 // load needed packages
@@ -21,30 +21,26 @@ var mongoose = require('mongoose');
 var request = require('request');
 var template = require('jade');
 
-// load own modules
-var api = require('./api/image-search.js');
-var routes = require('./routes/index.js');
-
-// init app
-var app = express();
-
-app.use(express.static(__dirname + '/static'))
-app.use(routes);
 
 // db START
 
 // connect mongoose to db
 mongoose.connect(dbURL);
 
-// define latestSearches schema
-var latestSearchesSchema = new mongoose.Schema({
-    term: String,
-    when: Date
-});
-
-var latestSearches = mongoose.model('latestSearches', latestSearchesSchema);
 
 // db END
+
+
+// init app
+var app = express();
+//var router = express.Router();
+
+// load own modules
+//var api = require('./api/image-search.js');
+var routes = require('./routes.js');
+
+app.use(express.static(__dirname + '/static'))
+app.use(routes);
 
 
 // MAYBE NOT NEEDED
@@ -53,3 +49,4 @@ var latestSearches = mongoose.model('latestSearches', latestSearchesSchema);
 
 // start app
 app.listen(port);
+console.log('app started on port: ' + port);
