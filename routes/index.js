@@ -2,21 +2,23 @@
 
 'use strict';
 
-modules.export = function(app,db) {
+// root
+router.get('/', function(req,res) {
+//    res.status(200).sendFile('index');
+    var html = template('index');
+    res.send(html);
+});
 
-    // root
-    app.get('/', function(req,res) {
+// latest search terms
+router.get('/api/latest/imagesearch', api.latestQueries);
 
-    });
+// submit a search query
+router.get('/api/imagesearch/:query(*)', api.submitQuery);
 
-    // latest search terms
-    app.get('/api/latest/imagesearch', function(req,res) {
+router.get('*', function(req,res) {
+    //res.status(404).sendFile('404');
+    var html = template('404');
+    res.send(html);
+}
 
-    });
-
-    // submit a search query
-    app.get('/api/imagesearch/:query(*)', function(req,res) {
-
-    });
-
-};
+modules.export = router;
