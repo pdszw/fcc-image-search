@@ -1,0 +1,27 @@
+https://cse.google.com/cse/publicurl?cx=015210821254511219620:mqlrkwto5u0
+
+IzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q
+
+fcc-image-search-api-key
+
+
+https://www.googleapis.com/customsearch/v1
+
+
+test with: https://developers.google.com/apis-explorer/#p/customsearch/v1/
+
+
+instructions from: https://github.com/vadimdemedes/google-images
+and here: https://developers.google.com/custom-search/json-api/v1/overview
+https://developers.google.com/custom-search/json-api/v1/reference/cse/list
+
+NOTE: only accepts 100 searches per day. Then $5/1000 additional searches.
+
+1. Create a Google Custom Search Engine (https://cse.google.com/cse)
+2. name the search, but do NOT specify any sites.
+3. under advanced, enable image search.
+4. under advanced, 'Restrict Pages by Schema.org Types'. Use 'Thing' as the limitation.
+5. Set up a Google Custom Search Engine API (Set up a Google Custom Search Engine API -- https://console.developers.google.com/)
+6. Create a Credential (API Key).
+
+
