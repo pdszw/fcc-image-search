@@ -14,10 +14,12 @@ router.get('/', function(req, res, next) {
 // GET /api/imagesearch/:query(*)
 
 router.get('/api/imagesearch/:query(*)', function(req,res) {
+    res.send('query');
 });
 
 // GET /api/latest/imagesearch/
 router.get('/api/latest/imagesearch/', function(req,res) {
+    res.send('latest');
 });
 
 module.exports = router;
