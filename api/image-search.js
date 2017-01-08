@@ -1,5 +1,6 @@
 'use strict';
 
+require('dotenv').config();
 var request = require('request');
 var Searches = require('../models/searches.js'); 
 
@@ -20,13 +21,17 @@ exports.submit = function(terms,offset = 1) {
         var reformattedTerms = terms.split(' ').join('+');
 
         var start;
+/*
         if (typeof offset === 'undefined') { 
             start = ""; 
         } else {
             start = "&start=" + offset;
         }
+*/
 
+        start = "";
         // GET https://www.googleapis.com/customsearch/v1?q=testing+1+2+3&cx=015210821254511219620%3Amqlrkwto5u0&num=10&searchType=image&key={YOUR_API_KEY}
+/*
         var query = `https://www.googleapis.com/customsearch/v1?`
             + `searchType=image`
             + `${start}`
@@ -34,20 +39,31 @@ exports.submit = function(terms,offset = 1) {
             + `&q=${reformattedTerms}`
             + `&cx=${process.env.CX}`
             + `&key=${process.env.API_KEY}`;
+*/
 
+        var query = `https://www.googleapis.com/customsearch/v1?`
+            + `key=${process.env.API_KEY}`
+            + `&cx=${process.env.CX}`
+            + `${start}`
+            + `&num=10`
+            + `&q=${reformattedTerms}`
+            + `&searchType=image`
+            + `&alt=json`;
+/*
         var fs = require('fs');
         var path = require('path');
         var data = JSON.parse(fs.readFileSync(path.join(__dirname, 'sample.json')));
+*/
 
-/*
+
         request(query, {json:true}, function(err,res,data) {
 
             if (err) {
                 console.log('error: ' + err);
-                result = { error: err }; 
+                result = { myerror: err }; 
                 resolve(result);
-            } else if (!err && res.statusCode == 200) {
-*/
+            } else if (!err) { //&& res.statusCode == 200) {
+/*
                 result = data.items.map(function(item) {
                     return {
                         url: item.link,
@@ -56,7 +72,8 @@ exports.submit = function(terms,offset = 1) {
                         context: item.image.contextLink
                     };
                 });                
-
+*/
+/*
                 Searches.create({
                     term: terms,
                     when: Date.now() 
@@ -67,15 +84,16 @@ exports.submit = function(terms,offset = 1) {
                         console.log('saved query to db. term: ' + terms);
                     }
                 });
+*/
+//                resolve(result);
+                resolve(data);
 
-                resolve(result);
-/*
             } else {
                 console.log('something went wrong.');
             }
 
         });
-*/
+
     });
 };
 

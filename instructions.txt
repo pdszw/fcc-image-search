@@ -1,9 +1,11 @@
 https://cse.google.com/cse/publicurl?cx=015210821254511219620:mqlrkwto5u0
 
-IzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q
+API Key: AIzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q
+CX: 015210821254511219620:mqlrkwto5u0
 
 fcc-image-search-api-key
 
+https://code.google.com/apis/console
 
 https://www.googleapis.com/customsearch/v1
 
@@ -23,5 +25,12 @@ NOTE: only accepts 100 searches per day. Then $5/1000 additional searches.
 4. under advanced, 'Restrict Pages by Schema.org Types'. Use 'Thing' as the limitation.
 5. Set up a Google Custom Search Engine API (Set up a Google Custom Search Engine API -- https://console.developers.google.com/)
 6. Create a Credential (API Key).
+7. check quota usage here: https://code.google.com/apis/console
 
 
+
+curl tests:
+
+
+
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET "https://www.googleapis.com/customsearch/v1?key=AIzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q&cx=015210821254511219620:mqlrkwto5u0&q=testing+1+2+3+4&num=10&searchType=image&alt=json"
