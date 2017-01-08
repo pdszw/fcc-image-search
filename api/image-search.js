@@ -2,21 +2,12 @@
 
 require('dotenv').config();
 var request = require('request');
-var Searches = require('../models/searches.js'); 
+//var Searches = require('../models/searches.js'); 
 
 // pass to this function the search terms (query) and offset (defaults to 1 if nothing passed).
 exports.submit = function(terms,offset = 1) {
     return new Promise (function(resolve,reject) {
         var result;
-
-/*
-        function testing() {
-            var searchResult = { terms: terms, offset: offset };
-            resolve(searchResult);        // resolve the promise with var 'searchResult', which then returns it to whatever called submitSearches.
-        }
-        //return { terms: terms, offset: offset }
-        setTimeout(testing, 5000);
-*/
 
         var reformattedTerms = terms.split(' ').join('+');
 
@@ -28,20 +19,6 @@ exports.submit = function(terms,offset = 1) {
             start = "&start=" + offset;
         }
 
-
-//        start = "";
-
-        // GET https://www.googleapis.com/customsearch/v1?q=testing+1+2+3&cx=015210821254511219620%3Amqlrkwto5u0&num=10&searchType=image&key={YOUR_API_KEY}
-/*
-        var query = `https://www.googleapis.com/customsearch/v1?`
-            + `searchType=image`
-            + `${start}`
-            + `&num=10`
-            + `&q=${reformattedTerms}`
-            + `&cx=${process.env.CX}`
-            + `&key=${process.env.API_KEY}`;
-*/
-
         var query = `https://www.googleapis.com/customsearch/v1?`
             + `key=${process.env.API_KEY}`
             + `&cx=${process.env.CX}`
@@ -50,12 +27,6 @@ exports.submit = function(terms,offset = 1) {
             + `&q=${reformattedTerms}`
             + `&searchType=image`
             + `&alt=json`;
-/*
-        var fs = require('fs');
-        var path = require('path');
-        var data = JSON.parse(fs.readFileSync(path.join(__dirname, 'sample.json')));
-*/
-
 
         request(query, {json:true}, function(err,res,data) {
 
