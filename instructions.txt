@@ -1,17 +1,3 @@
-https://cse.google.com/cse/publicurl?cx=015210821254511219620:mqlrkwto5u0
-
-API Key: AIzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q
-CX: 015210821254511219620:mqlrkwto5u0
-
-fcc-image-search-api-key
-
-https://code.google.com/apis/console
-
-https://www.googleapis.com/customsearch/v1
-
-
-test with: https://developers.google.com/apis-explorer/#p/customsearch/v1/
-
 
 instructions from: https://github.com/vadimdemedes/google-images
 and here: https://developers.google.com/custom-search/json-api/v1/overview
@@ -23,14 +9,17 @@ NOTE: only accepts 100 searches per day. Then $5/1000 additional searches.
 2. name the search, but do NOT specify any sites.
 3. under advanced, enable image search.
 4. under advanced, 'Restrict Pages by Schema.org Types'. Use 'Thing' as the limitation.
+5. get CX ID from this page.
 5. Set up a Google Custom Search Engine API (Set up a Google Custom Search Engine API -- https://console.developers.google.com/)
 6. Create a Credential (API Key).
 7. check quota usage here: https://code.google.com/apis/console
 
 
+google api explorer tests:
+
+https://developers.google.com/apis-explorer/#p/customsearch/v1/
+
 
 curl tests:
 
-
-
-curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET "https://www.googleapis.com/customsearch/v1?key=AIzaSyCWR5ZqlOqMtQqGaVIkyfchUGOf_qh6H-Q&cx=015210821254511219620:mqlrkwto5u0&q=testing+1+2+3+4&num=10&searchType=image&alt=json"
+curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET "https://www.googleapis.com/customsearch/v1?key=ABCabc123ABC_ab1A-A&cx=0123456789:abcdefghij&q=testing+1+2+3+4&num=10&searchType=image&alt=json"
