@@ -23,3 +23,11 @@ https://developers.google.com/apis-explorer/#p/customsearch/v1/
 curl tests:
 
 curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X GET "https://www.googleapis.com/customsearch/v1?key=ABCabc123ABC_ab1A-A&cx=0123456789:abcdefghij&q=testing+1+2+3+4&num=10&searchType=image&alt=json"
+
+
+
+.env contents:
+
+DB_URL='mongodb://localhost:27017/searchdb'
+API_KEY='ABCabc123ABC_ab1A-A''
+CX='0123456789:abcdefghi'
