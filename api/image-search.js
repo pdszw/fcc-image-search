@@ -21,15 +21,16 @@ exports.submit = function(terms,offset = 1) {
         var reformattedTerms = terms.split(' ').join('+');
 
         var start;
-/*
+
         if (typeof offset === 'undefined') { 
             start = ""; 
         } else {
             start = "&start=" + offset;
         }
-*/
 
-        start = "";
+
+//        start = "";
+
         // GET https://www.googleapis.com/customsearch/v1?q=testing+1+2+3&cx=015210821254511219620%3Amqlrkwto5u0&num=10&searchType=image&key={YOUR_API_KEY}
 /*
         var query = `https://www.googleapis.com/customsearch/v1?`
@@ -62,8 +63,8 @@ exports.submit = function(terms,offset = 1) {
                 console.log('error: ' + err);
                 result = { myerror: err }; 
                 resolve(result);
-            } else if (!err) { //&& res.statusCode == 200) {
-/*
+            } else if (!err && data) { //&& res.statusCode == 200) {
+
                 result = data.items.map(function(item) {
                     return {
                         url: item.link,
@@ -72,8 +73,8 @@ exports.submit = function(terms,offset = 1) {
                         context: item.image.contextLink
                     };
                 });                
-*/
-/*
+
+
                 Searches.create({
                     term: terms,
                     when: Date.now() 
@@ -84,9 +85,9 @@ exports.submit = function(terms,offset = 1) {
                         console.log('saved query to db. term: ' + terms);
                     }
                 });
-*/
-//                resolve(result);
-                resolve(data);
+
+                resolve(result);
+//                resolve(data);
 
             } else {
                 console.log('something went wrong.');
