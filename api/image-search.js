@@ -2,7 +2,7 @@
 
 require('dotenv').config();
 var request = require('request');
-//var Searches = require('../models/searches.js'); 
+var Searches = require('../models/searches.js'); 
 
 // pass to this function the search terms (query) and offset (defaults to 1 if nothing passed).
 exports.submit = function(terms,offset = 1) {
